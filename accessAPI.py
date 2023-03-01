@@ -8,8 +8,8 @@ def allowSelfSignedHttps(allowed):
     if allowed and not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None):
         ssl._create_default_https_context = ssl._create_unverified_context
 
-def llamarServicio():
-    allowSelfSignedHttps(True) # this line is needed if you use self-signed certificate in your scoring service.
+def predict_loan_approval(age, job, marital, education, default, housing, loan, contact, month, duration, campaign, pdays, previous, poutcome, emp_var_rate, cons_price_idx, cons_conf_idx, euribor3m, nr_employed):
+    allowSelfSignedHttps(True)# this line is needed if you use self-signed certificate in your scoring service.
 
     # Request data goes here
     # The example below assumes JSON formatting which may be updated
@@ -20,25 +20,25 @@ def llamarServicio():
       "Inputs": {
         "data": [
           {
-            "age": 25,
-            "job": "unknown",
-            "marital": "single",
-            "education": "high.school",
-            "default": "yes",
-            "housing": "yes",
-            "loan": "yes",
-            "contact": "cellular",
-            "month": "jan",
-            "duration": 4900,
-            "campaign": 50,
-            "pdays": 500,
-            "previous": 5,
-            "poutcome": "nonexistent",
-            "emp.var.rate": 1,
-            "cons.price.idx": 94,
-            "cons.conf.idx": -40,
-            "euribor3m": 2.5,
-            "nr.employed": 5000
+            "age": age,
+            "job": job,
+            "marital": marital,
+            "education": education,
+            "default": default,
+            "housing": housing,
+            "loan": loan,
+            "contact": contact,
+            "month": month,
+            "duration": duration,
+            "campaign": campaign,
+            "pdays": pdays,
+            "previous": previous,
+            "poutcome": poutcome,
+            "emp.var.rate": emp_var_rate,
+            "cons.price.idx": cons_price_idx,
+            "cons.conf.idx": cons_conf_idx,
+            "euribor3m": euribor3m,
+            "nr.employed": nr_employed
           }
         ]
       },
